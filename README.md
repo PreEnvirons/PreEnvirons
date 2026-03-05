@@ -63,14 +63,13 @@ Development and validation of a spatial prediction instrument to identify urban 
 
 ## Funding
 
+
+Funded by **Instituto de Salud Carlos III** — *Proyectos de I+D+I en Salud* (Acción Estratégica en Salud 2025), project **PI25/01538**, co-funded by the European Union. Affiliated with **CIBEROBN** (Centro de Investigación Biomédica en Red — Fisiopatología de la Obesidad y Nutrición).
+
 <p align="left">
   <img src="assets/3-Logotipos%20ISCIII.png" height="50" alt="ISCIII">&nbsp;&nbsp;&nbsp;
   <img src="assets/4-ES_co_fundedvertical_RGB_POS.png" height="60" alt="Co-funded by the European Union">
 </p>
-
-Funded by **Instituto de Salud Carlos III** — *Proyectos de I+D+I en Salud* (Acción Estratégica en Salud 2025), project **PI25/01538**, co-funded by the European Union. Affiliated with **CIBEROBN** (Centro de Investigación Biomédica en Red — Fisiopatología de la Obesidad y Nutrición).
-
-Previous funding: *Entornos Obesogénicos Andalucía* (PI-0067-2022, Junta de Andalucía) · *SIG-COVID-19* (Govern Balear) · INVESTIGO (EU — Next Generation EU, Ref. 74/2024 RI-24).
 
 ---
 
