@@ -1,6 +1,4 @@
-# Pre-Environs Research Group
-
-**Environmental epidemiology · Obesogenic environments · Urban health · Spain**
+# Pre-Environs Research Project
 
 <p align="center">
   <img src="assets/2-IDISBA.jpg" height="55" alt="IdISBa">&nbsp;&nbsp;&nbsp;&nbsp;
@@ -11,13 +9,13 @@
 
 ## About
 
-**Pre-Environs** is a multidisciplinary research group investigating how the built, food, and social environment shapes physical activity, dietary behaviours, and cardiometabolic health outcomes.
+**Pre-Environs** is a multidisciplinary research project investigating how the built, food, and social environment shapes physical activity, dietary behaviours, and cardiometabolic health outcomes.
 
-Our work is anchored in **PRE-ENVIRONS** (*Influencia de los Entornos Obesogénicos Durante una Intervención para la Pérdida de Peso en el contexto del ensayo PREDIMED-PLUS*, PI25/01538), a coordinated project funded by the **Instituto de Salud Carlos III** (Acción Estratégica en Salud 2025) that examines how obesogenic environments modify the effectiveness of a weight-loss intervention across Mediterranean populations.
+Our work is anchored in **PRE-ENVIRONS** (*Influencia de los Entornos Obesogénicos Durante una Intervención para la Pérdida de Peso en el contexto del ensayo PREDIMED-PLUS*), a coordinated project funded by the **Instituto de Salud Carlos III** (Acción Estratégica en Salud 2025) that examines how obesogenic environments modify the effectiveness of a weight-loss intervention across Mediterranean populations.
 
-The project builds on data from the **PREDIMED-PLUS** randomised controlled trial (Spain, 2014–2022; n = 6,874 adults with overweight/obesity and metabolic syndrome) and evaluates three environmental dimensions via Geographic Information Systems:
+The project builds on data from the [**PREDIMED-PLUS**](https://www.predimedplus.com/) randomised controlled trial (Spain, 2014–2022; n = 6,874 adults with overweight/obesity and metabolic syndrome) and evaluates three environmental dimensions via Geographic Information Systems:
 
-- **Built environment** — walkability and accessibility to open public spaces
+- **Built environment** — walkability, green spaces and accessibility to open public spaces
 - **Food environment** — access to fresh produce markets, fast-food outlets, and convenience stores
 - **Social residential environment** — socioeconomic and demographic context of the neighbourhood
 
