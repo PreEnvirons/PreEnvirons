@@ -1,18 +1,16 @@
 # Pre-Environs Research Group
 
-**Environmental epidemiology · Obesogenic environments · Urban health · Spain**
-
 ---
 
 ## About
 
-**Pre-Environs** is a multidisciplinary research group investigating how the built, food, and social environment shapes physical activity, dietary behaviours, and cardiometabolic health outcomes.
+**Pre-Environs** is a multidisciplinary research project investigating how the built, food, and social environment shapes physical activity, dietary behaviours, and cardiometabolic health outcomes.
 
 Our work is anchored in **PRE-ENVIRONS** (*Influencia de los Entornos Obesogénicos Durante una Intervención para la Pérdida de Peso en el contexto del ensayo PREDIMED-PLUS*, PI25/01538), a coordinated project funded by the **Instituto de Salud Carlos III** (Acción Estratégica en Salud 2025) that examines how obesogenic environments modify the effectiveness of a weight-loss intervention across Mediterranean populations.
 
 The project builds on data from the **PREDIMED-PLUS** randomised controlled trial (Spain, 2014–2022; n = 6,874 adults with overweight/obesity and metabolic syndrome) and evaluates three environmental dimensions via Geographic Information Systems:
 
-- **Built environment** — walkability and accessibility to open public spaces
+- **Built environment** — walkability, green spaces and accessibility to open public spaces
 - **Food environment** — access to fresh produce markets, fast-food outlets, and convenience stores
 - **Social residential environment** — socioeconomic and demographic context of the neighbourhood
 
@@ -31,7 +29,7 @@ Key findings:
 
 ### 2 · Obesogenic environments and weight-loss intervention response (PREDIMED-PLUS)
 
-Analysis of how neighbourhood-level environmental exposures — quantified via GIS — interact with the PREDIMED-PLUS intensive lifestyle intervention to explain heterogeneity in weight loss, changes in central obesity, physical activity, and dietary adherence across participants.
+Analysis of how neighbourhood-level environmental exposures interact with the PREDIMED-PLUS intensive lifestyle intervention to explain heterogeneity in weight loss, changes in central obesity, physical activity, and dietary adherence across participants.
 
 ### 3 · GIS-based predictive tool for obesogenic environments
 
@@ -39,25 +37,30 @@ Development and validation of a spatial prediction instrument to identify urban 
 
 ---
 
-## Team
+## Team IdISBa
 
 | Researcher | Role | Affiliation |
 |---|---|---|
-| **Antoni Colom Fernández** | Principal Investigator (IdISBa node) | NUTRECOR Research Group · Health Research Institute of the Balearic Islands (IdISBa) · CIBEROBN |
+| **Antoni Colom Fernández** | Principal Investigator (IdISBa node) | NUTRECOR Research Group · Health Research Institute of the Balearic Islands (IdISBa) |
+| **Mauricio Ruiz Pérez** | GIS & Spatial Analysis | Department of Geography - UIB |
+| **Carles Homs Pérez** | GIS Development | Center for Geographic Information Technologies - UIB |
+| **Juan Bauzà Llinàs** | Remote Sensing & Spatial Analysis | Center for Geographic Information Technologies - UIB |
+| **Montserrat Compa Ferrer** | Environmental & Spatial Ecology | Department of Biology - UIB |
+
+## Team IBIMA
+
+| Researcher | Role | Affiliation |
+|---|---|---|
 | **Julia Wärnberg** | IP Coordinator | EpiPHAAN Research Group · IBIMA Plataforma BIONAND · Universidad de Málaga |
-| **Mauricio Ruiz Pérez** | GIS & Spatial Analysis | Geographic Information Systems and Remote-Sensing Service (SSIGT) · University of the Balearic Islands |
-| **Carles Homs Pérez** | GIS Development | University of the Balearic Islands |
-| **Juan Bauzà Llinàs** | Remote Sensing & Spatial Analysis | University of the Balearic Islands |
-| **Montserrat Compa Ferrer** | Environmental & Spatial Ecology | University of the Balearic Islands |
+| **Napoleón Pérez Farinós** | Co-IP Coordinator | EpiPHAAN Research Group · IBIMA Plataforma BIONAND · Universidad de Málaga |
+| **F. Javier Barón López** | Mathematician and computer scientist | EpiPHAAN Research Group · IBIMA Plataforma BIONAND · Universidad de Málaga |
 
 
 ---
 
 ## Funding
 
-This research is funded by **Instituto de Salud Carlos III** through the *Proyectos de I+D+I en Salud* programme (Acción Estratégica en Salud 2025), project **PI25/01538**, co-funded by the European Union. The group is affiliated with **CIBEROBN** (Centro de Investigación Biomédica en Red — Fisiopatología de la Obesidad y Nutrición).
-
-Previous competitive funding: *Entornos Obesogénicos Andalucía* (PI-0067-2022, Junta de Andalucía); *SIG-COVID-19* (Govern Balear); INVESTIGO programme (EU — Next Generation EU, Ref. 74/2024 RI-24).
+This research is funded by **Instituto de Salud Carlos III** through the *Proyectos de I+D+I en Salud* programme (Acción Estratégica en Salud 2025), project **PI25/01538**, co-funded by the European Union.
 
 ---
 
@@ -70,5 +73,6 @@ Previous competitive funding: *Entornos Obesogénicos Andalucía* (PI-0067-2022,
 
 ## Contact
 
-📧 antonicolom@gmail.com · 𝕏 [@antoni_colom](https://twitter.com/antoni_colom)
-🏥 IdISBa · Hospital Universitario Son Espases · Palma, Illes Balears, Spain
+preenvirons@gmail.com  
+IdISBa · Carretera de Valldemossa, 79, Hospital Universitario Son Espases. Edificio S. 07120 Palma Illes Balears, Spain
+IBIMA Plataforma BIONAND · Avenida Severo Ochoa, 35, 29590, Málaga, Spain
