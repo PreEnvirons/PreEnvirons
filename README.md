@@ -4,9 +4,7 @@
 
 <p align="center">
   <img src="assets/2-IDISBA.jpg" height="55" alt="IdISBa">&nbsp;&nbsp;&nbsp;&nbsp;
-  <img src="assets/1-Iblma.jpg" height="55" alt="IBIMA">&nbsp;&nbsp;&nbsp;&nbsp;
-  <img src="assets/3-Logotipos%20ISCIII.png" height="55" alt="ISCIII">&nbsp;&nbsp;&nbsp;&nbsp;
-  <img src="assets/4-ES_co_fundedvertical_RGB_POS.png" height="65" alt="Co-funded by the European Union">
+  <img src="assets/1-Ibima.jpg" height="55" alt="IBIMA">&nbsp;&nbsp;&nbsp;&nbsp;
 </p>
 
 ---
