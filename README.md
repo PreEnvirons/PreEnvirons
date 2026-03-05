@@ -26,7 +26,7 @@ The project builds on data from the [**PREDIMED-PLUS**](https://www.predimedplus
 
 ### 1 · Temporal trends in neighbourhood access to daily destinations · 12 Spanish cities (2014–2024)
 
-**Live demo →** <https://preenvirons.github.io/bivariate-urban-access/>
+**Live demo:** <https://preenvirons.github.io/bivariate-urban-access/>
 
 Longitudinal ecological analysis of neighbourhood access across 12 geographically diverse Spanish cities. Access is quantified annually within 100 × 100 m grid cells using the [Global Healthy and Sustainable City Indicators](https://www.healthysustainablecities.org/) open-science toolkit (healthy food markets, convenience stores, public transport stops within 500 m), standardised as z-scores to enable spatiotemporal comparisons.
 
@@ -82,8 +82,8 @@ Funded by **Instituto de Salud Carlos III** — *Proyectos de I+D+I en Salud* (A
 
 ## Contact
 
-[preenvirons\@gmail.com](mailto:preenvirons@gmail.com){.email}
+[preenvirons@gmail.com]
 
-IdISBa · Carretera de Valldemossa, 79 Hospital Universitario Son Espases. Edificio S. 07120 Palma Illes Balears. España. · [idisba.info\@idisba.es](mailto:idisba.info@idisba.es){.email}
+IdISBa · Carretera de Valldemossa, 79 Hospital Universitario Son Espases. Edificio S. 07120 Palma Illes Balears. España. · [idisba.info@idisba.es]
 
-IBIMA Plataforma BIONAND · Avenida Severo Ochoa, 35, 29590, Málaga. España. · [info\@ibima.eu](mailto:info@ibima.eu){.email}
+IBIMA Plataforma BIONAND · Avenida Severo Ochoa, 35, 29590, Málaga. España. · [info@ibima.eu]
