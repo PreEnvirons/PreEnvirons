@@ -49,8 +49,7 @@ Development and validation of a spatial prediction instrument to identify urban 
 | **Carles Homs Pérez** | GIS Development | University of the Balearic Islands |
 | **Juan Bauzà Llinàs** | Remote Sensing & Spatial Analysis | University of the Balearic Islands |
 | **Montserrat Compa Ferrer** | Environmental & Spatial Ecology | University of the Balearic Islands |
-| **Xavier Delclòs-Alió** | Urban Geography | GRATET · Universitat Rovira i Virgili |
-| **Marc Domínguez** | GIS & Geospatial Data | SSIGT · University of the Balearic Islands |
+
 
 ---
 
