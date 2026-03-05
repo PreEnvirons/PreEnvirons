@@ -46,21 +46,26 @@ Development and validation of a spatial prediction instrument to identify urban 
 
 | Researcher | Role | Affiliation |
 |---|---|---|
-| **Antoni Colom Fernández** | Principal Investigator (IdISBa node) | NUTRECOR Research Group · IdISBa · CIBEROBN |
-| **Julia Wärnberg** | IP Coordinator | EpiPHAAN Research Group · IBIMA Plataforma BIONAND · Universidad de Málaga |
-| **Mauricio Ruiz Pérez** | GIS & Spatial Analysis | SSIGT · University of the Balearic Islands |
-| **Carles Homs Pérez** | GIS Development | University of the Balearic Islands |
-| **Juan Bauzà Llinàs** | Remote Sensing & Spatial Analysis | University of the Balearic Islands |
-| **Montserrat Compa Ferrer** | Environmental & Spatial Ecology | University of the Balearic Islands |
-| **Xavier Delclòs-Alió** | Urban Geography | GRATET · Universitat Rovira i Virgili |
-| **Marc Domínguez** | GIS & Geospatial Data | SSIGT · University of the Balearic Islands |
+| **Antoni Colom Fernández** | Principal Investigator (IdISBa) | NUTRECOR Research Group · IdISBa |
+| **Mauricio Ruiz Pérez** | GIS & Spatial Analysis | Department of Geography · University of the Balearic Islands |
+| **Carles Homs Pérez** | GIS Development | Center for Geographic Information Technologies · University of the Balearic Islands |
+| **Juan Bauzà Llinàs** | Remote Sensing & Spatial Analysis | Center for Geographic Information Technologies · University of the Balearic Islands |
+| **Montserrat Compa Ferrer** | Environmental & Spatial Ecology | Department of Biology · University of the Balearic Islands |
+
+## Team
+
+| Researcher | Role | Affiliation |
+|---|---|---|
+| **Julia Wärnberg** | Principal Investigator - Coordinator (IBIMA) | EpiPHAAN Research Group · IBIMA Plataforma BIONAND · Universidad de Málaga |
+| **Napoleón Pérez Farinós** | Co-Principal Investigator - Coordinator (IBIMA) | EpiPHAAN Research Group · IBIMA Plataforma BIONAND · Universidad de Málaga |
+| **F. Javier Barón López** | Mathematician and computer scientist | EpiPHAAN Research Group · IBIMA Plataforma BIONAND · Universidad de Málaga |
 
 ---
 
 ## Funding
 
 
-Funded by **Instituto de Salud Carlos III** — *Proyectos de I+D+I en Salud* (Acción Estratégica en Salud 2025), project **PI25/01538**, co-funded by the European Union. Affiliated with **CIBEROBN** (Centro de Investigación Biomédica en Red — Fisiopatología de la Obesidad y Nutrición).
+Funded by **Instituto de Salud Carlos III** — *Proyectos de I+D+I en Salud* (Acción Estratégica en Salud 2025), projects **PI25/01521**, **PI25/01538**, co-funded by the European Union.
 
 <p align="left">
   <img src="assets/3-Logotipos%20ISCIII.png" height="50" alt="ISCIII">&nbsp;&nbsp;&nbsp;
@@ -72,11 +77,12 @@ Funded by **Instituto de Salud Carlos III** — *Proyectos de I+D+I en Salud* (A
 ## Selected publications
 
 - Colom A, Mavoa S, Ruiz M, et al. Neighbourhood walkability and physical activity: moderating role of a physical activity intervention in overweight and obese older adults with metabolic syndrome. *Age and Ageing*, 2020. https://doi.org/10.1093/ageing/afaa246
-- Ruiz M et al. Geographical distribution and social justice of COVID-19. *GeoHealth*, 2023.
+
 
 ---
 
 ## Contact
 
-📧 antonicolom@gmail.com · 𝕏 [@antoni_colom](https://twitter.com/antoni_colom)
-🏥 IdISBa · Hospital Universitario Son Espases · Palma, Illes Balears, Spain
+preenvirons@gmail.com 
+IdISBa · Carretera de Valldemossa, 79 Hospital Universitario Son Espases. Edificio S. 07120 Palma Illes Balears. España. · idisba.info@idisba.es
+IBIMA Plataforma BIONAND · Avenida Severo Ochoa, 35, 29590, Málaga. España. · info@ibima.eu
