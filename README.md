@@ -1,11 +1,12 @@
 # Pre-Environs Research Project
 
 <p align="center">
-  <img src="assets/2-IDISBA.jpg" height="55" alt="IdISBa">&nbsp;&nbsp;&nbsp;&nbsp;
-  <img src="assets/1-Ibima.jpg" height="55" alt="IBIMA">&nbsp;&nbsp;&nbsp;&nbsp;
+
+<img src="assets/2-IDISBA.jpg" alt="IdISBa" height="55"/>     <img src="assets/1-Ibima.jpg" alt="IBIMA" height="55"/>    
+
 </p>
 
----
+------------------------------------------------------------------------
 
 ## About
 
@@ -15,22 +16,21 @@ Our work is anchored in **PRE-ENVIRONS** (*Influencia de los Entornos Obesogéni
 
 The project builds on data from the [**PREDIMED-PLUS**](https://www.predimedplus.com/) randomised controlled trial (Spain, 2014–2022; n = 6,874 adults with overweight/obesity and metabolic syndrome) and evaluates three environmental dimensions via Geographic Information Systems:
 
-- **Built environment** — walkability, green spaces and accessibility to open public spaces
-- **Food environment** — access to fresh produce markets, fast-food outlets, and convenience stores
-- **Social residential environment** — socioeconomic and demographic context of the neighbourhood
+-   **Built environment** — walkability, green spaces and accessibility to open public spaces
+-   **Food environment** — access to fresh produce markets, fast-food outlets, and convenience stores
+-   **Social residential environment** — socioeconomic and demographic context of the neighbourhood
 
----
+------------------------------------------------------------------------
 
 ## Current research lines
 
 ### 1 · Temporal trends in neighbourhood access to daily destinations · 12 Spanish cities (2014–2024)
 
+**Live demo →** <https://preenvirons.github.io/bivariate-urban-access/>
+
 Longitudinal ecological analysis of neighbourhood access across 12 geographically diverse Spanish cities. Access is quantified annually within 100 × 100 m grid cells using the [Global Healthy and Sustainable City Indicators](https://www.healthysustainablecities.org/) open-science toolkit (healthy food markets, convenience stores, public transport stops within 500 m), standardised as z-scores to enable spatiotemporal comparisons.
 
-Key findings:
-- Mean daily living index increased from −0.18 (95% CI: −0.33, −0.02) in 2014 to +0.20 (0.06, 0.33) in 2024
-- Largest gains in Barcelona, Málaga, and Sevilla; modest growth in León and Jaén
-- Convenience store access showed the most marked growth (0.32 → 0.46); healthy food markets remain the most spatially unequal resource (0.33 → 0.53)
+Key findings: - Mean daily living index increased from −0.18 (95% CI: −0.33, −0.02) in 2014 to +0.20 (0.06, 0.33) in 2024 - Largest gains in Barcelona, Málaga, and Sevilla; modest growth in León and Jaén - Convenience store access showed the most marked growth (0.32 → 0.46); healthy food markets remain the most spatially unequal resource (0.33 → 0.53)
 
 ### 2 · Obesogenic environments and weight-loss intervention response (PREDIMED-PLUS)
 
@@ -40,12 +40,12 @@ Analysis of how neighbourhood-level environmental exposures — quantified via G
 
 Development and validation of a spatial prediction instrument to identify urban areas requiring targeted public health policies, with a planned technology transfer to clinical and planning decision-makers.
 
----
+------------------------------------------------------------------------
 
 ## Team
 
 | Researcher | Role | Affiliation |
-|---|---|---|
+|------------------------|------------------------|------------------------|
 | **Antoni Colom Fernández** | Principal Investigator (IdISBa) | NUTRECOR Research Group · IdISBa |
 | **Mauricio Ruiz Pérez** | GIS & Spatial Analysis | Department of Geography · University of the Balearic Islands |
 | **Carles Homs Pérez** | GIS Development | Center for Geographic Information Technologies · University of the Balearic Islands |
@@ -55,35 +55,35 @@ Development and validation of a spatial prediction instrument to identify urban 
 ## Team
 
 | Researcher | Role | Affiliation |
-|---|---|---|
+|------------------------|------------------------|------------------------|
 | **Julia Wärnberg** | Principal Investigator - Coordinator (IBIMA) | EpiPHAAN Research Group · IBIMA Plataforma BIONAND · Universidad de Málaga |
 | **Napoleón Pérez Farinós** | Co-Principal Investigator - Coordinator (IBIMA) | EpiPHAAN Research Group · IBIMA Plataforma BIONAND · Universidad de Málaga |
 | **F. Javier Barón López** | Mathematician and computer scientist | EpiPHAAN Research Group · IBIMA Plataforma BIONAND · Universidad de Málaga |
 
----
+------------------------------------------------------------------------
 
 ## Funding
-
 
 Funded by **Instituto de Salud Carlos III** — *Proyectos de I+D+I en Salud* (Acción Estratégica en Salud 2025), projects **PI25/01521**, **PI25/01538**, co-funded by the European Union.
 
 <p align="left">
-  <img src="assets/3-Logotipos%20ISCIII.png" height="50" alt="ISCIII">&nbsp;&nbsp;&nbsp;
-  <img src="assets/4-ES_co_fundedvertical_RGB_POS.png" height="60" alt="Co-funded by the European Union">
+
+<img src="assets/3-Logotipos%20ISCIII.png" alt="ISCIII" height="50"/>    <img src="assets/4-ES_co_fundedvertical_RGB_POS.png" alt="Co-funded by the European Union" height="60"/>
+
 </p>
 
----
+------------------------------------------------------------------------
 
 ## Selected publications
 
-- Colom A, Mavoa S, Ruiz M, et al. Neighbourhood walkability and physical activity: moderating role of a physical activity intervention in overweight and obese older adults with metabolic syndrome. *Age and Ageing*, 2020. https://doi.org/10.1093/ageing/afaa246
+-   Colom A, Mavoa S, Ruiz M, et al. Neighbourhood walkability and physical activity: moderating role of a physical activity intervention in overweight and obese older adults with metabolic syndrome. *Age and Ageing*, 2020. <https://doi.org/10.1093/ageing/afaa246>
 
-
----
+------------------------------------------------------------------------
 
 ## Contact
 
-preenvirons@gmail.com  
+[preenvirons\@gmail.com](mailto:preenvirons@gmail.com){.email}
 
-IdISBa · Carretera de Valldemossa, 79 Hospital Universitario Son Espases. Edificio S. 07120 Palma Illes Balears. España. · idisba.info@idisba.es
-IBIMA Plataforma BIONAND · Avenida Severo Ochoa, 35, 29590, Málaga. España. · info@ibima.eu
+IdISBa · Carretera de Valldemossa, 79 Hospital Universitario Son Espases. Edificio S. 07120 Palma Illes Balears. España. · [idisba.info\@idisba.es](mailto:idisba.info@idisba.es){.email}
+
+IBIMA Plataforma BIONAND · Avenida Severo Ochoa, 35, 29590, Málaga. España. · [info\@ibima.eu](mailto:info@ibima.eu){.email}
