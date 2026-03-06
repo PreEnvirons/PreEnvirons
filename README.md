@@ -78,6 +78,10 @@ Funded by **Instituto de Salud Carlos III** — *Proyectos de I+D+I en Salud* (A
 
 -   Colom A, Mavoa S, Ruiz M, et al. Neighbourhood walkability and physical activity: moderating role of a physical activity intervention in overweight and obese older adults with metabolic syndrome. *Age and Ageing*, 2020. <https://doi.org/10.1093/ageing/afaa246>
 
+### Publications under review
+
+- Colom A, Pérez-Farinós N, Barón-López FJ, et al. Area-level socioeconomic inequalities in adiposity among older adults: the moderating effect of neighborhood walkability.
+
 ------------------------------------------------------------------------
 
 ## Contact
