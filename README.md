@@ -51,22 +51,6 @@ Development of a sex-specific predictive model linking environmental exposures t
 
 ------------------------------------------------------------------------
 
-## Selected outputs
-
-### Temporal trends in neighbourhood access to daily destinations · 12 Spanish cities (2014–2024)
-
-**Conference output (ISBNPA 2026, poster I-P-H.01).** **Live demo:** <https://preenvirons.github.io/bivariate-urban-access/>
-
-A standardised, spatially and temporally comparable framework to monitor changes in neighbourhood access to daily destinations (healthy food markets, convenience stores and public transport stops within 500 m) across 12 Spanish cities over the past decade. The dataset feeds Research line 1.
-
-- Mean daily living index improved by **+0.38 SD per decade** across all 12 cities, with 98% of grid cells covered by complete 11-year series.
-- Largest gains in Barcelona, Granada and Málaga; slowest growth in Alacant, Gasteiz and Jaén.
-- Low-access areas improved fastest, so convergence dominates, but stagnant pockets persist and warrant targeted policy.
-
-*Colom A, Delclòs-Alió X, Domínguez M. ISBNPA 2026, Cádiz.*
-
-------------------------------------------------------------------------
-
 ## Team
 
 ### IdISBa subproject (PI25/01538)
@@ -110,6 +94,22 @@ Funded by **Instituto de Salud Carlos III**, *Proyectos de I+D+I en Salud* (Acci
 -   Colom A, Mavoa S, Ruiz M, et al. Neighbourhood walkability and physical activity: moderating role of a physical activity intervention in overweight and obese older adults with metabolic syndrome. *Age and Ageing*, 2020. <https://doi.org/10.1093/ageing/afaa246>
 
     *Seminal study of the Pre-Environs research line. Showed that participants in highly walkable neighbourhoods benefited substantially more from the PREDIMED-PLUS intervention in terms of physical activity, providing the first PREDIMED-PLUS evidence of effect modification by the built environment.*
+
+------------------------------------------------------------------------
+
+## Conference presentations
+
+### Temporal trends in neighbourhood access to daily destinations · 12 Spanish cities (2014–2024)
+
+*Colom A, Delclòs-Alió X, Domínguez M. ISBNPA 2026 Annual Meeting, Cádiz. Poster I-P-H.01.*
+
+**Live demo:** <https://preenvirons.github.io/bivariate-urban-access/>
+
+A standardised, spatially and temporally comparable framework to monitor changes in neighbourhood access to daily destinations (healthy food markets, convenience stores and public transport stops within 500 m) across 12 Spanish cities over the past decade. The dataset feeds Research line 1.
+
+- Mean daily living index improved by **+0.38 SD per decade** across all 12 cities, with 98% of grid cells covered by complete 11-year series.
+- Largest gains in Barcelona, Granada and Málaga; slowest growth in Alacant, Gasteiz and Jaén.
+- Low-access areas improved fastest, so convergence dominates, but stagnant pockets persist and warrant targeted policy.
 
 ------------------------------------------------------------------------
 
