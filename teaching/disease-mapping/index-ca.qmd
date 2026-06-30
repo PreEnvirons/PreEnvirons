@@ -227,6 +227,32 @@ c(total_Y = sum(ind$Y), total_E = round(sum(ind$E), 1))
 `sum(E) = sum(Y)`. Té sentit: hem repartit el **total real** de casos de Palma entre les seccions **segons la seva població i estructura d'edat i sexe**. Ara ja podem comparar l'observat amb l'esperat.
 :::
 
+::: {.callout-tip collapse="true"}
+## Drecera: `SpatialEpi::expected()`
+
+Els **dos passos** que acabem de fer (taxa de referència per estrat → esperats per secció) són exactament el que encapsula la funció `expected()` del paquet [`SpatialEpi`](https://cran.r-project.org/package=SpatialEpi), molt utilitzat en epidemiologia espacial (és el que fa servir Paula Moraga al seu [tutorial de dades areals](https://www.paulamoraga.com/tutorial-areal-data/)).
+
+```{r}
+#| label: expected-spatialepi
+#| eval: false
+library(SpatialEpi)
+
+# 1) Ordenar primer per secció i després per estrat (sexe × edat)
+ord <- dades |> arrange(CUSEC, sexe, grup_edat)
+
+# 2) Una sola línia = els nostres passos 1 + 2 junts
+E_spatialepi <- expected(
+  population = ord$poblacio,
+  cases      = ord$casos,
+  n.strata   = 6           # 2 sexes × 3 grups d'edat
+)
+```
+
+Requisits: els vectors han d'estar **ordenats primer per àrea i després per estrat**, i el nombre d'estrats per àrea (`n.strata`) ha de ser **constant** (aquí 6). El vector resultant, amb una entrada per secció en el mateix ordre d'aparició, coincideix amb la `E` que hem calculat a mà.
+
+Aquí ho hem fet pas a pas perquè es vegi **què fa internament** la funció i per poder inspeccionar la taxa de referència de cada estrat. A la pràctica diària, una vegada entesa la lògica, una línia de `SpatialEpi::expected()` és el que s'utilitza.
+:::
+
 ## La Raó d'Incidència Estandarditzada (RIE)
 
 La **RIE** (en anglès *SMR/SIR*) compara l'observat amb l'esperat:

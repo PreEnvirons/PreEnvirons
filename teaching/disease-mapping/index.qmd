@@ -220,6 +220,32 @@ c(total_Y = sum(ind$Y), total_E = round(sum(ind$E), 1))
 `sum(E) = sum(Y)`. Tiene sentido: hemos repartido el **total real** de casos de Palma entre las secciones **según su población y estructura de edad/sexo**. Ahora podemos comparar lo observado con lo esperado.
 :::
 
+::: {.callout-tip collapse="true"}
+## Atajo: `SpatialEpi::expected()`
+
+Los **dos pasos** que acabamos de hacer (tasa de referencia por estrato → esperados por sección) son exactamente lo que encapsula la función `expected()` del paquete [`SpatialEpi`](https://cran.r-project.org/package=SpatialEpi), de uso muy extendido en epidemiología espacial (es la que utiliza Paula Moraga en su [tutorial de datos areales](https://www.paulamoraga.com/tutorial-areal-data/)).
+
+```{r}
+#| label: expected-spatialepi
+#| eval: false
+library(SpatialEpi)
+
+# 1) Ordenar primero por sección y luego por estrato (sexo × edad)
+ord <- datos |> arrange(CUSEC, sexo, grupo_edad)
+
+# 2) Una sola línea = nuestros pasos 1 + 2 juntos
+E_spatialepi <- expected(
+  population = ord$poblacion,
+  cases      = ord$casos,
+  n.strata   = 6           # 2 sexos × 3 grupos de edad
+)
+```
+
+Requisitos: los vectores deben estar **ordenados primero por área y luego por estrato**, y el número de estratos por área (`n.strata`) debe ser **constante** (aquí 6). El vector resultante, con una entrada por sección en el mismo orden de aparición, coincide con el `E` que hemos calculado a mano.
+
+Aquí lo hemos hecho paso a paso para que se vea **qué hace internamente** la función y para poder inspeccionar la tasa de referencia de cada estrato. En el trabajo diario, una vez entendida la lógica, una línea de `SpatialEpi::expected()` es lo habitual.
+:::
+
 ## La Razón de Incidencia Estandarizada (RIE)
 
 La **RIE** (en inglés *SMR/SIR*) compara lo observado con lo esperado:
