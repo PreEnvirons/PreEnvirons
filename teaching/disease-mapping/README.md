@@ -4,7 +4,7 @@ A hands-on **spatial epidemiology** seminar for **2nd-year Nursing** students.
 
 It walks through the descriptive core of *disease mapping* with **areal data**: observed vs. expected counts, **indirect standardisation**, the **Standardised Incidence Ratio (SIR / RIE)**, static and interactive choropleth maps, the **socioeconomic gradient** of childhood obesity, and the **small-numbers problem**. Bayesian smoothing (INLA/BYM) is deliberately left out and only pointed to as the next step.
 
-Inspired by [Paula Moraga's areal data tutorial](https://www.paulamoraga.com/tutorial-areal-data/), simplified and applied to the Pre-Environs research line.
+Deliberately introductory and applied to the Pre-Environs research line.
 
 ## Files
 

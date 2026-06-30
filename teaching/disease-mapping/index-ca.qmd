@@ -44,7 +44,7 @@ En acabar seràs capaç de:
 5. Descriure la relació entre un problema de salut i la **privació socioeconòmica** del barri.
 6. Reconèixer el **problema dels nombres petits** i per què motiva tècniques més avançades.
 
-Aquest seminari segueix l'esperit de l'excel·lent [tutorial de dades d'àrea de Paula Moraga](https://www.paulamoraga.com/tutorial-areal-data/), però **simplificat** (sense models bayesians) i **aplicat** a la línia de recerca de Pre-Environs sobre entorns i salut.
+Aquest seminari és deliberadament **introductori**: se centra en l'estandardització indirecta clàssica i la lectura de mapes de coropletes, sense models bayesians ni suavitzat espacial, i s'aplica a la línia de recerca de Pre-Environs sobre entorns i salut.
 
 ---
 
@@ -62,7 +62,7 @@ La nostra pregunta:
 ## Les dades d'aquest seminari
 
 - **Salut (sintètica).** Casos d'**obesitat infantil** (2–15 anys) per secció, simulats a l'estil del **Programa de Salut Infantoadolescent (PSIA)**. L'obesitat es defineix amb el **criteri de l'OMS** (z-score d'IMC per a l'edat). Els recomptes són **ficticis**, però estan **calibrats** amb prevalences i gradients reals de les Balears; **no contenen cap dada personal**.
-- **Privació (real).** Índex de privació de la **Societat Espanyola d'Epidemiologia (SEE, IP2011)** i **renda neta mitjana per persona** (INE, Atles de Distribució de Renda de les Llars, 2022), per secció censal.
+- **Privació (real).** Índex de privació de la **Societat Espanyola d'Epidemiologia (SEE, IP2011)** [@duque2021] i **renda neta mitjana per persona** (INE, Atles de Distribució de Renda de les Llars, 2022), per secció censal.
 - **Geometria (real).** Límits de les seccions censals de Palma.
 :::
 
@@ -227,10 +227,10 @@ c(total_Y = sum(ind$Y), total_E = round(sum(ind$E), 1))
 `sum(E) = sum(Y)`. Té sentit: hem repartit el **total real** de casos de Palma entre les seccions **segons la seva població i estructura d'edat i sexe**. Ara ja podem comparar l'observat amb l'esperat.
 :::
 
-::: {.callout-tip collapse="true"}
+::: {.callout-tip}
 ## Drecera: `SpatialEpi::expected()`
 
-Els **dos passos** que acabem de fer (taxa de referència per estrat → esperats per secció) són exactament el que encapsula la funció `expected()` del paquet [`SpatialEpi`](https://cran.r-project.org/package=SpatialEpi), molt utilitzat en epidemiologia espacial (és el que fa servir Paula Moraga al seu [tutorial de dades areals](https://www.paulamoraga.com/tutorial-areal-data/)).
+Els **dos passos** que acabem de fer (taxa de referència per estrat → esperats per secció) són exactament el que encapsula la funció `expected()` del paquet [`SpatialEpi`](https://cran.r-project.org/package=SpatialEpi), molt utilitzat en epidemiologia espacial.
 
 ```{r}
 #| label: expected-spatialepi
@@ -415,7 +415,7 @@ Quan les àrees són petites, es fan servir **models de suavitzat espacial** (mo
 
 Això queda **fora d'aquest seminari** (és matèria avançada), però és exactament el pas següent:
 
-- el [tutorial de dades d'àrea de Paula Moraga](https://www.paulamoraga.com/tutorial-areal-data/#4_Modelling) el desenvolupa amb `INLA`;
+- el projecte [R-INLA](https://www.r-inla.org/) implementa aquests models en R;
 - el mateix grup Pre-Environs l'aplica al risc espaciotemporal d'obesitat infantil a les Balears.
 
 ## Resum
