@@ -111,6 +111,21 @@ secciones |>
 
 `ip_see` es el índice de privación (valores **altos = más desfavorecido**), `renta` la renta media por persona en euros y `quintil` agrupa las secciones en cinco grupos de privación (1 = menos, 5 = más).
 
+::: callout-note
+## Curiosidad cartográfica · Cabrera dentro de Palma
+
+Si al alejar la vista del mapa observas una "isla" muy al sur, no es un fallo: el **archipiélago de Cabrera** pertenece administrativamente al municipio de Palma. La sección `0704001019` cubre a la vez una zona céntrica de Palma, donde reside prácticamente toda la población contabilizada, y las islas del **Parque Nacional Marítimo-Terrestre del Archipiélago de Cabrera** (Ley 14/1991), casi deshabitadas: puestos del Parque, faro y antigua guarnición militar.
+
+**¿Por qué?** Cabrera nunca llegó a constituirse en municipio propio. Estuvo bajo titularidad privada de la familia Feliu durante buena parte de los siglos XIX y XX, con una guarnición militar permanente, y fue adquirida por el Estado a finales de los años ochenta como paso previo a su declaración como parque nacional. Sin población residente estable suficiente para formar un término municipal independiente, el INE mantiene su demarcación censal adscrita a Palma, capital insular de referencia, dentro de un único CUSEC compartido con barrios del núcleo urbano.
+
+Esto tiene dos implicaciones prácticas:
+
+1. En los mapas coropléticos verás una "cola" muy al sur con la misma RIE que la sección de la que forma parte: es un artefacto administrativo, no una señal epidemiológica.
+2. Si calculáramos tasas por superficie (densidad), la isla añadiría kilómetros cuadrados sin habitantes y sesgaría el denominador. Aquí trabajamos siempre con población, así que el efecto es solo visual.
+
+No la excluimos del análisis: es un buen recordatorio de que **las secciones censales obedecen a una lógica administrativa, no analítica**.
+:::
+
 ## Casos observados: por qué los recuentos crudos engañan
 
 Primero sumamos los casos de cada sección (sumando sexos y edades). Lo llamamos **Y** (observados).

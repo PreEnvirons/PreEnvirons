@@ -118,6 +118,21 @@ seccions |>
 
 `ip_see` és l'índex de privació (valors **alts = més desafavorit**), `renta` la renda mitjana per persona en euros i `quintil` agrupa les seccions en cinc grups de privació (1 = menys, 5 = més).
 
+::: callout-note
+## Curiositat cartogràfica · Cabrera dins de Palma
+
+Si en allunyar la vista del mapa hi veus una "illa" molt al sud, no és un error: l'**arxipèlag de Cabrera** pertany administrativament al municipi de Palma. La secció `0704001019` cobreix alhora una zona cèntrica de Palma, on resideix pràcticament tota la població comptabilitzada, i les illes del **Parc Nacional Maritimoterrestre de l'Arxipèlag de Cabrera** (Llei 14/1991), gairebé deshabitades: llocs del Parc, far i antiga guarnició militar.
+
+**Per què?** Cabrera mai no va arribar a constituir-se en municipi propi. Va estar sota titularitat privada de la família Feliu durant bona part dels segles XIX i XX, amb una guarnició militar permanent, i va ser adquirida per l'Estat a finals dels anys vuitanta com a pas previ a la seva declaració com a parc nacional. Sense població resident estable suficient per formar un terme municipal independent, l'INE manté la seva demarcació censal adscrita a Palma, capital insular de referència, dins un únic CUSEC compartit amb barris del nucli urbà.
+
+Això té dues implicacions pràctiques:
+
+1. Als mapes coroplètics hi veuràs una "cua" molt al sud amb la mateixa RIE que la secció de la qual forma part: és un artefacte administratiu, no un senyal epidemiològic.
+2. Si calculéssim taxes per superfície (densitat), l'illa afegiria quilòmetres quadrats sense habitants i esbiaixaria el denominador. Aquí treballem sempre amb població, així que l'efecte és només visual.
+
+No l'excloem de l'anàlisi: és un bon recordatori que **les seccions censals obeeixen a una lògica administrativa, no analítica**.
+:::
+
 ## Casos observats: per què els recomptes crus enganyen
 
 Primer sumem els casos de cada secció (sumant sexes i edats). L'anomenem **Y** (observats).
