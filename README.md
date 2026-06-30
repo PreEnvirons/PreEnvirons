@@ -117,6 +117,23 @@ Funded by **Instituto de Salud Carlos III**, *Proyectos de I+D+I en Salud* (Acci
 
 ------------------------------------------------------------------------
 
+## Teaching
+
+Open, reproducible teaching materials in **spatial epidemiology**, aligned with the project's research lines on environments and health.
+
+### Disease mapping — childhood obesity in Palma (areal data)
+
+A hands-on seminar for **2nd-year Nursing** students: observed vs. expected counts, indirect standardisation, the **Standardised Incidence Ratio (SIR/RIE)**, choropleth maps (static and interactive), the socioeconomic gradient of childhood obesity, and the small-area **"small-numbers" problem**. Built with **Quarto + R** and fully reproducible, using **synthetic** child-health data (calibrated to real Balearic prevalences and to the group's BYM deprivation gradient) and **real** area-level covariates (SEE IP2011 deprivation; INE ADRH income). Available in **Spanish** and **Catalan**.
+
+Inspired by [Paula Moraga's areal data tutorial](https://www.paulamoraga.com/tutorial-areal-data/), deliberately simplified (no Bayesian models) and applied to the Pre-Environs research line.
+
+- **Source & data:** [`teaching/disease-mapping/`](teaching/disease-mapping/)
+- **Live page (after enabling Pages):** [Castellano](https://preenvirons.github.io/PreEnvirons/) · [Català](https://preenvirons.github.io/PreEnvirons/index-ca.html) — *Settings → Pages → Source: GitHub Actions*
+
+[**See all teaching materials →**](teaching/)
+
+------------------------------------------------------------------------
+
 ## Contact
 
 preenvirons@gmail.com

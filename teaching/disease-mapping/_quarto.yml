@@ -1,0 +1,7 @@
+project:
+  type: default
+  output-dir: _site
+  title: "Pre-Environs · Disease mapping"
+  render:
+    - index.qmd
+    - index-ca.qmd

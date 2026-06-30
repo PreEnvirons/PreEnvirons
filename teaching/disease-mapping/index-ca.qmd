@@ -1,0 +1,421 @@
+---
+title: "Introducció al *disease mapping*: on emmalalteixen més els infants?"
+subtitle: "Epidemiologia espacial amb dades d'àrea. Obesitat infantil a Palma per secció censal"
+author: "Pre-Environs · Antoni Colom Fernández"
+date: today
+lang: ca
+bibliography: referencias.bib
+nocite: '@*'
+format:
+  html:
+    theme: cosmo
+    toc: true
+    toc-depth: 2
+    toc-title: "Continguts"
+    number-sections: true
+    code-fold: show
+    code-tools: true
+    code-copy: true
+    embed-resources: true
+    fig-align: center
+    fig-width: 8
+    fig-height: 6.5
+execute:
+  warning: false
+  message: false
+  echo: true
+  freeze: auto
+---
+
+> 🌐 **Llengua:** Català (actual) · [Versión en castellano](index.qmd)
+
+::: {.callout-tip appearance="simple"}
+**Per a qui és aquest seminari.** Estudiants de **2n del Grau d'Infermeria** (assignatura *Epidemiologia, Salut Pública i Comunitària*). No cal experiència prèvia en cartografia ni en estadística avançada: n'hi ha prou amb la idea de **taxa** i saber copiar i executar codi en R. Tot el material és **reproduïble** i les dades de salut són **sintètiques**.
+:::
+
+## Objectius d'aprenentatge {.unnumbered}
+
+En acabar seràs capaç de:
+
+1. Explicar què són les **dades d'àrea** i per què es cartografien en salut pública.
+2. Calcular casos **observats** i **esperats** mitjançant **estandardització indirecta**.
+3. Calcular i interpretar la **Raó d'Incidència Estandarditzada (RIE)**.
+4. Construir un **mapa de coropletes** estàtic i interactiu i llegir-lo correctament.
+5. Descriure la relació entre un problema de salut i la **privació socioeconòmica** del barri.
+6. Reconèixer el **problema dels nombres petits** i per què motiva tècniques més avançades.
+
+Aquest seminari segueix l'esperit de l'excel·lent [tutorial de dades d'àrea de Paula Moraga](https://www.paulamoraga.com/tutorial-areal-data/), però **simplificat** (sense models bayesians) i **aplicat** a la línia de recerca de Pre-Environs sobre entorns i salut.
+
+---
+
+## Per què cartografiar la malaltia?
+
+L'any 1854, durant una epidèmia de còlera al Soho de Londres, el metge **John Snow** va dibuixar en un mapa cada mort. Els punts s'agrupaven al voltant d'una font d'aigua de Broad Street. Aquell mapa va ajudar a assenyalar l'aigua —i no el "aire miasmàtic"— com a via de transmissió. Va ser un dels naixements de l'**epidemiologia espacial**: *on* emmalalteix la gent aporta pistes sobre *per què* emmalalteix.
+
+Avui rarament disposem de la posició exacta de cada cas (per confidencialitat). En el seu lloc treballem amb **dades d'àrea** (*areal data*): el **recompte** de casos dins d'unitats administratives. En aquest seminari la unitat serà la **secció censal**, la unitat estadística més petita que publica l'INE (~1.000–1.500 habitants). El municipi de **Palma** té 245 seccions.
+
+La nostra pregunta:
+
+> **L'obesitat infantil es distribueix de manera desigual entre els barris de Palma? Hi ha més obesitat a les zones més desafavorides?**
+
+::: {.callout-note}
+## Les dades d'aquest seminari
+
+- **Salut (sintètica).** Casos d'**obesitat infantil** (2–15 anys) per secció, simulats a l'estil del **Programa de Salut Infantoadolescent (PSIA)**. L'obesitat es defineix amb el **criteri de l'OMS** (z-score d'IMC per a l'edat). Els recomptes són **ficticis**, però estan **calibrats** amb prevalences i gradients reals de les Balears; **no contenen cap dada personal**.
+- **Privació (real).** Índex de privació de la **Societat Espanyola d'Epidemiologia (SEE, IP2011)** i **renda neta mitjana per persona** (INE, Atles de Distribució de Renda de les Llars, 2022), per secció censal.
+- **Geometria (real).** Límits de les seccions censals de Palma.
+:::
+
+## Preparació: paquets i dades
+
+```{r}
+#| label: setup
+library(sf)        # dades espacials (mapes)
+library(dplyr)     # manipulació de taules
+library(readr)     # llegir CSV
+library(ggplot2)   # gràfics i mapes estàtics
+library(leaflet)   # mapes interactius
+library(scales)    # format de nombres
+```
+
+Carreguem la **geometria** (un objecte espacial `sf`, una fila per secció) i les **dades de salut** (una fila per secció × sexe × grup d'edat). Donem noms en català a les columnes per comoditat.
+
+```{r}
+#| label: cargar-datos
+seccions <- st_read("data/palma_secciones.geojson", quiet = TRUE)
+
+dades <- read_csv(
+  "data/obesidad_infantil_palma_sintetica.csv",
+  col_types = cols(
+    CUSEC      = col_character(),  # codi de secció (text: conserva el 0 inicial!)
+    sexo       = col_character(),
+    grupo_edad = col_character(),
+    poblacion  = col_integer(),
+    casos      = col_integer()
+  )
+) |>
+  transmute(
+    CUSEC,
+    sexe      = recode(sexo, "Niño" = "Nen", "Niña" = "Nena"),
+    grup_edat = grupo_edad,                # 2-5, 6-11, 12-15
+    poblacio  = poblacion,                 # nombre d'infants en aquell estrat
+    casos     = casos                      # nombre amb obesitat en aquell estrat
+  )
+
+head(dades)
+```
+
+Cada secció apareix **sis vegades** a `dades`: dos sexes × tres grups d'edat (2–5, 6–11, 12–15).
+
+```{r}
+#| label: estructura
+# La geometria: una fila per secció, amb les covariables reals
+seccions |>
+  st_drop_geometry() |>
+  select(CUSEC, ip_see, renta, quintil) |>
+  head()
+```
+
+`ip_see` és l'índex de privació (valors **alts = més desafavorit**), `renta` la renda mitjana per persona en euros i `quintil` agrupa les seccions en cinc grups de privació (1 = menys, 5 = més).
+
+## Casos observats: per què els recomptes crus enganyen
+
+Primer sumem els casos de cada secció (sumant sexes i edats). L'anomenem **Y** (observats).
+
+```{r}
+#| label: observados
+observats <- dades |>
+  group_by(CUSEC) |>
+  summarise(
+    Y        = sum(casos),
+    poblacio = sum(poblacio),
+    .groups  = "drop"
+  )
+
+summary(observats$Y)
+```
+
+Si pintem directament **Y** al mapa, obtenim una imatge **enganyosa**:
+
+```{r}
+#| label: mapa-crudo
+#| fig-cap: "Recompte cru de casos (Y). Les seccions amb més infants tenen més casos, encara que el risc no sigui més alt."
+mapa_Y <- left_join(seccions, observats, by = "CUSEC")
+
+ggplot(mapa_Y) +
+  geom_sf(aes(fill = Y), color = "white", linewidth = 0.05) +
+  scale_fill_viridis_c(option = "magma", direction = -1, name = "Casos (Y)") +
+  labs(title = "Casos d'obesitat infantil per secció (recompte cru)") +
+  theme_void()
+```
+
+::: {.callout-warning}
+## El recompte cru no és risc
+
+Una secció amb molts infants tindrà molts casos **encara que el seu risc sigui normal**. Per comparar barris cal tenir en compte **quants infants hi ha** i **de quina edat i sexe són**. Aquest és el paper dels **casos esperats**.
+:::
+
+## Casos esperats: estandardització indirecta
+
+L'obesitat no afecta igual totes les edats ni tots dos sexes. Si un barri té més infants de l'edat de més risc, tindrà més casos només per la seva **composició**, no per ser un entorn pitjor.
+
+L'**estandardització indirecta** corregeix això. La idea, en dos passos:
+
+1. Calculem la **taxa de referència** de cada estrat (sexe × edat) fent servir **tot Palma**.
+2. Apliquem aquestes taxes a la **població de cada secció** per obtenir quants casos **esperaríem** si aquella secció es comportés com la mitjana de Palma. La suma per secció és **E** (esperats).
+
+$$E_i = \sum_{j} \; r_j \times n_{ij}$$
+
+on $r_j$ és la taxa de referència de l'estrat $j$ (sexe–edat) a Palma i $n_{ij}$ la població d'aquell estrat a la secció $i$.
+
+```{r}
+#| label: tasas-referencia
+# Pas 1: taxa de referència per estrat (tot Palma)
+referencia <- dades |>
+  group_by(sexe, grup_edat) |>
+  summarise(
+    taxa_ref = sum(casos) / sum(poblacio),
+    .groups  = "drop"
+  )
+
+referencia
+```
+
+S'hi veu el patró real: més prevalença en **nens** que en nenes i pic als **6–11 anys**.
+
+```{r}
+#| label: esperados
+# Pas 2: esperats en cada estrat = població × taxa de referència
+esperats <- dades |>
+  left_join(referencia, by = c("sexe", "grup_edat")) |>
+  mutate(esperats_ij = poblacio * taxa_ref) |>
+  group_by(CUSEC) |>
+  summarise(E = sum(esperats_ij), .groups = "drop")
+
+# Unim observats i esperats
+ind <- observats |>
+  left_join(esperats, by = "CUSEC")
+
+head(ind)
+```
+
+```{r}
+#| label: comprobacion
+# Comprovació clau de l'estandardització indirecta:
+# el total d'esperats coincideix amb el total d'observats.
+c(total_Y = sum(ind$Y), total_E = round(sum(ind$E), 1))
+```
+
+::: {.callout-note}
+## Un bon senyal
+
+`sum(E) = sum(Y)`. Té sentit: hem repartit el **total real** de casos de Palma entre les seccions **segons la seva població i estructura d'edat i sexe**. Ara ja podem comparar l'observat amb l'esperat.
+:::
+
+## La Raó d'Incidència Estandarditzada (RIE)
+
+La **RIE** (en anglès *SMR/SIR*) compara l'observat amb l'esperat:
+
+$$\text{RIE}_i = \frac{Y_i}{E_i}$$
+
+```{r}
+#| label: rie
+ind <- ind |>
+  mutate(
+    RIE = Y / E,
+    # Interval de confiança del 95 % (mètode exacte de Poisson, Byar)
+    LI  = qchisq(0.025, 2 * Y) / 2 / E,
+    LS  = qchisq(0.975, 2 * (Y + 1)) / 2 / E
+  )
+
+ind |> arrange(desc(RIE)) |> head(5)
+```
+
+::: {.callout-important}
+## Com es llegeix la RIE
+
+- **RIE ≈ 1** → hi ha **tants casos com s'esperava** (risc mitjà de Palma).
+- **RIE > 1** → **més** casos del que s'esperava (p. ex. 1,30 = un 30 % més).
+- **RIE < 1** → **menys** casos del que s'esperava.
+
+L'**interval de confiança** indica la incertesa: si inclou l'1, la diferència amb la mitjana podria deure's a l'atzar.
+:::
+
+## Cartografia de la RIE
+
+### Mapa estàtic
+
+Agrupem la RIE en classes per llegir-la millor i fem servir una paleta divergent centrada en 1.
+
+```{r}
+#| label: mapa-rie
+#| fig-cap: "RIE d'obesitat infantil per secció censal de Palma (dades sintètiques)."
+mapa <- left_join(seccions, ind, by = "CUSEC") |>
+  mutate(RIE_cat = cut(
+    RIE,
+    breaks = c(0, 0.7, 0.9, 1.1, 1.3, Inf),
+    labels = c("< 0,7", "0,7–0,9", "0,9–1,1", "1,1–1,3", "> 1,3")
+  ))
+
+ggplot(mapa) +
+  geom_sf(aes(fill = RIE_cat), color = "white", linewidth = 0.05) +
+  scale_fill_brewer(palette = "RdYlBu", direction = -1,
+                    name = "RIE", drop = FALSE) +
+  labs(title = "Risc relatiu d'obesitat infantil",
+       subtitle = "Palma · seccions censals · RIE = observats / esperats") +
+  theme_void()
+```
+
+Les seccions en **vermell** tenen més obesitat de l'esperada; en **blau**, menys.
+
+### Mapa interactiu
+
+Un mapa `leaflet` permet explorar cada secció amb el ratolí i veure'n les xifres.
+
+```{r}
+#| label: mapa-leaflet
+pal <- colorBin("YlOrRd", domain = mapa$RIE,
+                bins = c(0, 0.7, 0.9, 1.1, 1.3, ceiling(max(mapa$RIE, na.rm = TRUE))))
+
+etiquetes <- sprintf(
+  "<b>Secció %s</b><br/>Observats: %d<br/>Esperats: %.1f<br/><b>RIE: %.2f</b> (IC95 %.2f–%.2f)",
+  mapa$CUSEC, mapa$Y, mapa$E, mapa$RIE, mapa$LI, mapa$LS
+) |> lapply(htmltools::HTML)
+
+leaflet(mapa) |>
+  addProviderTiles("CartoDB.Positron") |>
+  addPolygons(
+    fillColor    = ~pal(RIE),
+    color        = "grey", weight = 0.5, fillOpacity = 0.7,
+    highlightOptions = highlightOptions(weight = 2, color = "black", bringToFront = TRUE),
+    label        = etiquetes
+  ) |>
+  addLegend(pal = pal, values = ~RIE, title = "RIE", position = "bottomright")
+```
+
+## L'obesitat s'associa amb la privació del barri?
+
+Fins aquí hem descrit *on*. Ara ens preguntem *amb què* es relaciona. Comparem la RIE amb la **privació socioeconòmica** de cada secció (índex SEE), agrupada en quintils (1 = menys desafavorit, 5 = més).
+
+```{r}
+#| label: gradiente
+#| fig-cap: "RIE d'obesitat infantil segons el quintil de privació del barri."
+ind_cov <- ind |>
+  left_join(st_drop_geometry(seccions) |> select(CUSEC, ip_see, renta, quintil),
+            by = "CUSEC")
+
+ggplot(ind_cov, aes(x = factor(quintil), y = RIE, fill = factor(quintil))) +
+  geom_hline(yintercept = 1, linetype = "dashed", color = "grey40") +
+  geom_boxplot(alpha = 0.8, show.legend = FALSE) +
+  scale_fill_brewer(palette = "OrRd") +
+  labs(x = "Quintil de privació (1 = menys, 5 = més desafavorit)",
+       y = "RIE",
+       title = "Gradient socioeconòmic de l'obesitat infantil") +
+  theme_minimal()
+```
+
+```{r}
+#| label: gradiente-tabla
+ind_cov |>
+  group_by(quintil) |>
+  summarise(
+    seccions  = n(),
+    RIE_mitja = round(mean(RIE), 2),
+    .groups   = "drop"
+  ) |>
+  mutate(rao_vs_Q1 = round(RIE_mitja / first(RIE_mitja), 2))
+```
+
+::: {.callout-important}
+## Lectura en clau de salut pública
+
+La RIE **augmenta de manera esglaonada** des dels barris menys als més desafavorits. És un **gradient social** de la salut: l'obesitat infantil no es reparteix a l'atzar, sinó que es concentra on hi ha més privació. Això orienta les **polítiques**: prioritzar recursos de prevenció (alimentació saludable, entorns que afavoreixin l'activitat física) als barris de més privació. És la idea central de la línia Pre-Environs sobre **entorns obesogènics** i desigualtats [@colom2026; @colom2020].
+:::
+
+::: {.callout-tip collapse="true"}
+## I si fem servir la renda en lloc de l'índex de privació?
+
+Privació i renda mesuren el mateix des de costats oposats (la seva correlació aquí és ≈ −0,69). Pots repetir el gràfic canviant `quintil` per `renta` i veuràs el gradient **invers**: a **menys renda**, **més** RIE.
+
+```{r}
+#| label: renta
+#| eval: false
+ggplot(ind_cov, aes(x = renta, y = RIE)) +
+  geom_point(alpha = 0.5) +
+  geom_smooth(method = "loess", se = TRUE) +
+  labs(x = "Renda neta mitjana per persona (€)", y = "RIE")
+```
+:::
+
+## El problema dels nombres petits
+
+Mira les seccions amb **pocs infants**: la seva RIE pot ser molt alta o molt baixa només per atzar, i el seu interval de confiança és **molt ample**.
+
+```{r}
+#| label: numeros-pequenos
+#| fig-cap: "Com menys casos esperats (E), més es dispara la incertesa de la RIE."
+ggplot(ind, aes(x = E, y = RIE)) +
+  geom_hline(yintercept = 1, linetype = "dashed", color = "grey50") +
+  geom_pointrange(aes(ymin = LI, ymax = LS), alpha = 0.4, linewidth = 0.3) +
+  labs(x = "Casos esperats (E)", y = "RIE (amb IC95 %)",
+       title = "Inestabilitat de la RIE en àrees petites") +
+  theme_minimal()
+```
+
+::: {.callout-warning}
+## Una RIE alta en un barri molt petit no és prova d'un problema
+
+Amb 3 casos esperats, observar-ne 6 dona una RIE de 2,0… però també podria haver sortit 2 (RIE 0,67) per pur atzar. Per això, abans d'alarmar o de decidir, cal mirar la **incertesa**, no només el color del mapa.
+:::
+
+### Com ho resolen els experts?
+
+Quan les àrees són petites, es fan servir **models de suavitzat espacial** (models bayesians jeràrquics, p. ex. **BYM amb INLA**). Aquests models "**manlleven informació**" de les seccions veïnes per estabilitzar les estimacions i separar el **senyal** del **soroll**.
+
+Això queda **fora d'aquest seminari** (és matèria avançada), però és exactament el pas següent:
+
+- el [tutorial de dades d'àrea de Paula Moraga](https://www.paulamoraga.com/tutorial-areal-data/#4_Modelling) el desenvolupa amb `INLA`;
+- el mateix grup Pre-Environs l'aplica al risc espaciotemporal d'obesitat infantil a les Balears.
+
+## Resum
+
+```{r}
+#| label: resumen
+#| echo: false
+knitr::kable(
+  data.frame(
+    Pas = c("1. Observats (Y)", "2. Esperats (E)", "3. RIE = Y/E",
+            "4. Mapa", "5. Covariable", "6. Límit"),
+    Idea = c("Comptar casos per secció",
+             "El que caldria esperar segons edat i sexe (estandardització indirecta)",
+             "Comparar l'observat amb l'esperat",
+             "Acolorir el risc i llegir-ne la incertesa",
+             "Relacionar amb la privació del barri",
+             "Nombres petits → la RIE és inestable → suavitzat")
+  ),
+  caption = "Recorregut del seminari"
+)
+```
+
+**Missatges clau:** el recompte cru enganya; la RIE compara observat amb esperat després d'ajustar per edat i sexe; els mapes **comuniquen** però també poden **confondre** si s'ignora la incertesa; i l'obesitat infantil segueix un **gradient social** que interpel·la les polítiques de salut pública.
+
+## Exercici
+
+1. **Llegeix el teu barri.** Tria una secció al mapa interactiu. Anota Y, E i RIE. Hi ha més o menys obesitat de l'esperada? L'interval de confiança inclou l'1?
+2. **Recalcula a mà.** Per a aquella secció, comprova que `RIE = Y / E`.
+3. **Compara extrems.** Amb la taula per quintils, quantes vegades més gran és la RIE mitjana del quintil 5 respecte de l'1?
+4. **Canvia la mirada.** Activa el bloc de la renda (`eval: false` → `true`) i descriu el gradient. És coherent amb el de l'índex de privació?
+5. **Pensar crític.** Troba una secció amb RIE alta però IC molt ample. Recomanaries una intervenció només amb aquesta dada? Què més demanaries?
+
+## Per saber-ne més {.unnumbered}
+
+::: {#refs}
+:::
+
+---
+
+::: {.callout-note appearance="simple" collapse="true"}
+## Nota sobre les dades i la reproductibilitat
+
+Els **casos d'obesitat són sintètics**: es van generar per secció i estrat (sexe × edat) a partir d'una prevalença base calibrada amb les xifres reals de l'estudi d'obesitat infantil en àrees petites de les Balears (definició OMS), multiplicada pel **risc relatiu per quintil de privació** estimat en el model BYM real del grup (RIE Q5/Q1 ≈ 1,4). Les **covariables de privació i renda són reals** (SEE IP2011; INE ADRH 2022), agregades a la secció censal. **No s'han utilitzat ni publicat microdades sanitàries.** El codi d'aquest document reprodueix íntegrament l'anàlisi a partir dels fitxers de `data/`.
+:::
